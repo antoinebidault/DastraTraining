@@ -7,9 +7,9 @@ namespace TaskManager.Controllers
     [Route("[controller]")]
     public class TasksController : ControllerBase
     {
-        private readonly TaskContext _context;
+        private readonly TaskDbContext _context;
 
-        public TasksController(TaskContext context)
+        public TasksController(TaskDbContext context)
         {
             _context = context;
         }
