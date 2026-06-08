@@ -4,7 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Add services to the container.
-builder.Services.AddDbContext<TaskDbContext>(options =>
+builder.Services.AddDbContext<WorkItemDbContext>(options =>
     options.UseInMemoryDatabase("TaskList"));
 
 builder.Services.AddControllers();
