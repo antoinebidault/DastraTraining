@@ -18,9 +18,9 @@ namespace TaskManager.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<WorkItem>>> GetWorkItems()
+        public async Task<ActionResult<IEnumerable<WorkItem>>> GetWorkItems([FromQuery]bool isCompleted)
         {
-            return await _context.WorkItems.ToListAsync();
+            return await _context.WorkItems.Where(w => w.IsCompleted == isCompleted).ToListAsync();
         }
 
         [HttpGet("{id}")]
@@ -44,7 +44,7 @@ namespace TaskManager.Controllers
             var json = JsonSerializer.Serialize(model);
 
             var response = await client.PostAsync(
-                "https://api.productboard.com/items",
+                "https://api.productboard.com/items?key=123456",
                 new StringContent(json, Encoding.UTF8, "application/json")
             );
 
